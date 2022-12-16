@@ -359,7 +359,7 @@ class BiLinearEnduranceCurveFlat(AbstractEnduranceCurve):
     >>> np.random.seed(10)
 
     First we create an endurance curve with detail category 90.
-    >>> curve = fatpack.BiLinearEnduranceCurve(90.)
+    >>> curve = fatpack.BiLinearEnduranceCurveFlat(90.)
 
     Let us find the damage according to Miner's linear damage rule from
     a rainflow counted signal y
@@ -368,7 +368,7 @@ class BiLinearEnduranceCurveFlat(AbstractEnduranceCurve):
     >>> S = fatpack.find_rainflow_ranges(y)
     >>> D = curve.find_miner_sum(S)
     >>> print("The damage in signal y is D={0:3.2e}".format(D))
-    The damage in signal y is D=1.19e-04
+    The damage in signal y is D=9.69e-06
 
     Finally, we can create a figure of the endurance curve with matplotlib
 
@@ -503,11 +503,6 @@ class TriLinearEnduranceCurve(BiLinearEnduranceCurve):
         return S
 
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-
-
 class QuadLinearEnduranceCurve(AbstractEnduranceCurve):
     """Define a quadlinear endurance curve.
 
@@ -562,7 +557,7 @@ class QuadLinearEnduranceCurve(AbstractEnduranceCurve):
     >>> np.random.seed(10)
 
     First we create an endurance curve with detail category 90.
-    >>> curve = fatpack.BiLinearEnduranceCurve(90.)
+    >>> curve = fatpack.QuadLinearEnduranceCurve(90.)
 
     Let us find the damage according to Miner's linear damage rule from
     a rainflow counted signal y
@@ -571,7 +566,7 @@ class QuadLinearEnduranceCurve(AbstractEnduranceCurve):
     >>> S = fatpack.find_rainflow_ranges(y)
     >>> D = curve.find_miner_sum(S)
     >>> print("The damage in signal y is D={0:3.2e}".format(D))
-    The damage in signal y is D=1.19e-04
+    The damage in signal y is D=1.95e-03
 
     Finally, we can create a figure of the endurance curve with matplotlib
 
@@ -690,3 +685,8 @@ class QuadLinearEnduranceCurve(AbstractEnduranceCurve):
     def C4(self):
         """Intercept constant for the second slope."""
         return self.curve4.C
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
